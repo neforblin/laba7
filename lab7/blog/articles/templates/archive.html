@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/style.css" />
+    <title>Архив статей</title>
+    <script defer src="../../static/helloworld.js"></script>
+</head>
+
+<body class="archive">
+
+    <header class="header">
+        <img src="../static/logo2.jpg" alt="image" class="image">
+    </header>
+
+    <main class="archive">
+
+        {% for post in posts %}
+        <section class="main-post">
+
+            <h1 class="post-title">
+                <a href="article/{{post.id}}">{{ post.title }}</a>
+            </h1>
+
+            <div class="post-about">
+
+                <div class="about-author">
+                    {{ post.author.username }}
+                </div>
+
+                <div class="about-date">
+                    {{ post.created_date }}
+                </div>
+
+                <div class="about-text">
+                <p class="text-article">{{ post.get_excerpt }}</p>
+            </div>
+
+            </div>
+
+            <button class="fold-button">Свернуть</button>
+        </section>
+        {% endfor %}
+    </main>
+
+    <footer class="logout">
+        <a href="../logout/" style="text-decoration: none;" >Выход из аккаунта!</a>
+    </footer>
+<script src="{{ STATIC_URL }}/static/js/fold-post.js"></script>
+</body>
+
+</html>
